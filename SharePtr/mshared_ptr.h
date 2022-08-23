@@ -62,7 +62,7 @@ public:
 	}
 	//移动构造模板（为了减少重复代码）
 	template<class U>
-	void move_consturct_from(mshared_ptr<U>& _right) noexcept {
+	void move_consturct_from(mshared_ptr<U>&& _right) noexcept {
 		this->_ptr = _right._ptr;
 		this->_count = _right._count;
 		_right._ptr = nullptr;
@@ -70,7 +70,7 @@ public:
 	}
 	//移动构造函数，防止生成默认移动构造
 	mshared_ptr(mshared_ptr&& other) noexcept {
-		move_consturct_from(other);
+		move_consturct_from(std::move(other));
 	}
 	//移动构造函数模板
 	template<class U>
