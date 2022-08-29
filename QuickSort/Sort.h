@@ -32,7 +32,7 @@ public:
 		Print();
 	}
 
-	//µ¥ÏòÁ´±í¿ìËÙÅÅĞò
+	//ë°è•¨ì¡ê¹Šìš°é†µíƒ¤åŸ¼
 	void QuickSort() {
 		HelpQuick(head->next, nullptr);
 		std::cout << "After QuickSort of List: " << std::endl;
@@ -41,11 +41,9 @@ public:
 
 	void HelpQuick(Node<T>* begin, Node<T>* end) {
 		if (begin == end) return;
-
 		T key = begin->val;
 		Node<T>* prepi = begin;
 		Node<T>* pi = begin->next, * pj = begin->next;
-
 		while (pj != end) {
 			if (pj->val < key) {
 				std::swap(pi->val, pj->val);
@@ -55,12 +53,11 @@ public:
 			pj = pj->next;
 		}
 		std::swap(begin->val, prepi->val);
-
 		HelpQuick(begin, prepi);
 		HelpQuick(pi, end);
 	}
 
-	//µ¥ÏòÁ´±í¿ìËÙÅÅĞò£¨·Çµİ¹é£©
+	//ë°è•¨ì¡ê¹Šìš°é†µíƒ¤åŸ¼ï¼ˆë ·ë’µë°±ï¼‰
 	void NoRecurQuickSort() {
 		std::queue<std::pair<Node<T>*, Node<T>*>> NodeQueue;
 		NodeQueue.emplace(std::pair<Node<T>*, Node<T>*>(head->next, nullptr));
@@ -96,13 +93,13 @@ public:
 	}
 };
 
-//Êı×é¿ìËÙÅÅĞò
+//é‘’è‰ìš°é†µíƒ¤åŸ¼
 template<typename T>
 void QuickSort(std::vector<T>& nums, size_t begin, size_t end) {
 	if (begin >= end) return;
 	T key = nums[begin];
 	int i = begin + 1, j = begin + 1;
-	while (j < end) {
+	while (j <= end) {
 		if (nums[j] < key) {
 			std::swap(nums[i], nums[j]);
 			++i;
@@ -114,7 +111,7 @@ void QuickSort(std::vector<T>& nums, size_t begin, size_t end) {
 	QuickSort(nums, i, end);
 }
 
-//Êı×é¿ìËÙÅÅĞò³£¼û°æ±¾
+//é‘’è‰ìš°é†µíƒ¤åŸ¼ë½ìˆ¨ê²½êµ¶
 template<typename T>
 void QuickSortNormal(std::vector<T>& nums, size_t begin, size_t end) {
 	if (begin >= end) return;
